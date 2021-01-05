@@ -558,7 +558,7 @@
   //#define PID_DEBUG             // Sends debug data to the serial port. Use 'M303 D' to toggle activation.
   //#define PID_OPENLOOP          // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
   //#define SLOW_PWM_HEATERS      // PWM with very low frequency (roughly 0.125Hz=8s) and minimum state time of approximately 1s useful for heaters driven by a relay
-  #define PID_FUNCTIONAL_RANGE 20 // If the temperature difference between the target temperature and the actual temperature
+  #define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 #endif
 
@@ -1095,7 +1095,8 @@
 
 //#define ALL_DRV_2208
 //#define FB_4S_STOCK
-#define FB_5_STOCK
+//#define FB_5_STOCK
+#define FB_5_CUST_HEAD
 
 #ifdef ALL_DRV_2208
 #define USR_E0_DIR true
@@ -1113,11 +1114,17 @@
 
 #ifdef FB_5_STOCK
 #define USR_E0_DIR false
-#define USR_X_DIR false
+#define USR_X_DIR false 
 #define USR_Y_DIR false
 #define USR_Z_DIR false
 #endif
 
+#ifdef FB_5_CUST_HEAD
+#define USR_E0_DIR false
+#define USR_X_DIR true  //смена крепления ремня
+#define USR_Y_DIR false
+#define USR_Z_DIR false
+#endif
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR USR_X_DIR
